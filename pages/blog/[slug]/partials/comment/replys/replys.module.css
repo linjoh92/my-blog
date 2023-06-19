@@ -1,0 +1,11 @@
+.container {
+    margin-top: 20px;
+    margin-left: 50px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.rubrk{
+    font-size: 14px;
+    margin-bottom: 0;
+}

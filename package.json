@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.7.2",
+    "@supabase/auth-helpers-react": "^0.4.0",
+    "@supabase/auth-ui-react": "^0.4.2",
+    "@supabase/auth-ui-shared": "^0.1.6",
     "@supabase/supabase-js": "^2.23.0",
     "@tiptap/extension-bold": "^2.0.3",
     "@tiptap/extension-code": "^2.0.3",
@@ -29,6 +33,7 @@
     "next": "13.4.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
     "react-modal": "^3.16.1",
     "swr": "^2.1.5",
     "typescript": "5.0.4"

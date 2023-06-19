@@ -4,24 +4,37 @@ import Input from "@components/input";
 import Label from "@components/label";
 import TextArea from "@components/text-area";
 import styles from "./add-comment.module.css";
+import useSWRMutation from "swr/mutation";
+import { addComment, commentsCacheKey} from "../../../../blog/api";
+import { useUser } from '@supabase/auth-helpers-react'
+
 
 export default function AddComment({ postId }) {
   const formRef = useRef(); // create a reference
+  const user = useUser();
 
-  const handleOnSubmit = (event) => {
+  const { trigger: addTrigger} = useSWRMutation(
+    commentsCacheKey,
+    addComment,
+  );
+  
+  const handleOnSubmit = async (event) => {
     event.preventDefault();
-    // Alternative way to get the form data
     const formData = new FormData(event.target);
-
     const { author, comment } = Object.fromEntries(formData);
+    const commentData = {
+      author,
+      comment,
+      post_id: postId,
+      ... {author_id: user?.id ?? null }
+    };
 
-    /* 
-      Perhaps a good place to add a comment to the database that is associated with the blog post 😙
-      */
-    console.log({ author, comment, postId });
-
-    // Reset the form after submission?
-    formRef.current.reset();
+    const { data, error } = await addTrigger(commentData);
+    
+    if (!error) {
+      formRef.current.reset();
+      console.log(commentData)
+    }
   };
 
   return (

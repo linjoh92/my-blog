@@ -1,6 +1,15 @@
 .container {
   padding: 10px;
-  border: 1px solid black;
+  border: 2px solid rgb(207, 207, 207);
   border-radius: 5px;
   font-size: 15px;
+  width: 100%;
+}
+
+.inputConatiner{
+  width: 100%;
+}
+
+.inputConatiner input:focus {
+  outline: none;
 }

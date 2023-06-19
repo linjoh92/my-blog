@@ -4,15 +4,116 @@
 }
 
 .link {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  gap: 0.25rem;
   color: inherit;
   text-decoration: none;
   font-weight: 500;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .date {
   font-family: monospace;
+}
+
+.author {
+  font-weight: 700;
+}
+
+.posts{
+  display: grid;
+  background-color: white;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 10px; 
+}
+
+.title{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: black;
+  font-weight: 600;
+}
+
+.introtext{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.introtext p{
+  width: 500px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.image{
+  width: 100%;
+  height: auto;
+}
+
+.searchBar{
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  position: relative;
+}
+
+.searchBar input{
+  padding: 10px 15px;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 50px;
+  font-size: 15px;
+  width: 500px;
+  margin: 10px;
+}
+
+.searchBar input:hover{
+  border: 1px solid grey;
+}
+
+.searchBar input:focus {
+  outline: none;
+}
+
+.searchIconContainer{
+  position: absolute;
+  width: 500px;
+  display: flex;
+  justify-content: end;
+  top: 35%;
+  padding: 0px 15px;
+}
+
+.searchIcon{
+  color: rgb(207, 207, 207);
+  transition: color 0.3s ease;
+}
+
+.searchBar:hover .searchIcon {
+  color: grey;
+}
+
+@media screen and (max-width: 800px) {
+  
+  .posts{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  
+  .posts{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+@media screen and (max-width: 540px) {
+  .searchIconContainer{
+    right: 25px;
+    padding: 0;
+  }
+
 }

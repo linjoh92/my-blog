@@ -46,7 +46,7 @@ This task is intended to enhance your understanding of full-stack web developmen
    - **Posts**: A table for storing blog posts. Each post should relate to the user who created it (you), implying a one-to-many relationship.
    - **Comments**: A table for storing comments. Each comment should have relations with the user who wrote it and the post it belongs to, necessitating a relationship among the Users, Posts, and Comments tables.
 
-3. **Comments**: Allow anyone to comment on posts.
+3. **Comments**: Allow anyone to comment on posts. **Detta stämmer inte med text som finns i html kod**
 
 4. **CRUD Operations**:
 
@@ -54,7 +54,7 @@ This task is intended to enhance your understanding of full-stack web developmen
 
    - **Comments**: A visitor should be able to post a comment. An author should be able to delete a comment if it belongs to a post created by them.
 
-5. **Data Sync**: Use SWR for synchronizing client and server data. Changes to the data should reflect immediately in the user interface.
+5. **Data Sync**: Use SWR for synchronizing client and server data. Changes to the data should reflect immediately in the user interface. // - **Fråga omn denna! just nu har jag att hela sidan uppdateas 1 gpng per sekund**
 
 6. **Image Upload**: Enable authors to upload an image to their post.
 

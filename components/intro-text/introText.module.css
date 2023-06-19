@@ -1,0 +1,11 @@
+.introtext{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .introtext p{
+    width: 500px;
+    line-height: 1.5;
+    text-align: center;
+  }

@@ -1,17 +1,24 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .editor {
-  border: 1px solid black;
   border-radius: 5px;
   padding: 5px;
+  background-color: white;
+  padding: 15px;
+  border: 2px solid rgb(207, 207, 207)
 }
 
 .uploadButton {
   margin-top: 10px;
   padding: 10px 10px !important;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  background-color: #f4f4f4;
 }
 
 .titleInput {

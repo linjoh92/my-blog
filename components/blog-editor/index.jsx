@@ -38,7 +38,7 @@ export default function BlogEditor({
           onImageUpload={(file) => setImage(file)}
           onReset={() => setImage(null)}
         />
-        <Label>Title</Label>
+        <Label className={styles.title}>Title</Label>
         <Input
           name="title"
           className={styles.titleInput}

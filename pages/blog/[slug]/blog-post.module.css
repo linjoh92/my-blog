@@ -1,6 +1,14 @@
+.containerPosts{
+  padding: 30px;
+}
+
 .container {
   padding-bottom: 20px;
   border-bottom: 1px solid black;
+}
+
+.noHover:hover {
+  transform: none;
 }
 
 .link {
@@ -18,6 +26,9 @@
   font-family: monospace;
   padding: 10px;
   border-radius: 5px;
+  display: block;
+  position: relative;
+  bottom: 17px;
   background-color: black;
   color: white;
   width: fit-content;
@@ -33,7 +44,7 @@
 .dateContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .border {
@@ -46,4 +57,23 @@
   margin-top: 20px;
   display: flex;
   gap: 5px;
+}
+
+.pagnationConatiner{
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.pagnationPrev{
+  padding-left:5px;
+}
+
+.pagnationNext{
+  padding-right:5px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.2;
 }

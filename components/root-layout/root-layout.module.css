@@ -7,19 +7,18 @@
   flex-direction: column;
   margin-right: 1rem;
   margin-left: 1rem;
-  margin-top: 2rem;
+  margin-top: 5rem;
+  background-color: white;
 }
 
 @media (min-width: 768px) {
   .container {
-    flex-direction: row;
-    margin-top: 5rem;
+    flex-direction: column;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    margin-top: 8rem;
     margin-right: auto;
     margin-left: auto;
   }
@@ -31,8 +30,7 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 20px;
 }
 
 @media (min-width: 768px) {
@@ -40,5 +38,23 @@
     margin-top: 0;
     padding-left: 0;
     padding-right: 0;
+    padding: 20px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom:0;
+    height: fit-content;
+  }
+
+  .mainContent {
+    margin-top: 0;
+    padding: 10px;
+  }
+
+}
+

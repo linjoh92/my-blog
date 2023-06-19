@@ -1,0 +1,39 @@
+.img{
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    object-fit: cover;
+    margin-top: 0;
+    filter: contrast(90%);
+}
+
+.imgContainer{
+    width: 50%;
+}
+
+.container{
+    display: flex;
+    padding: 20px;
+    height: 100vh;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.textContainer{
+    width: 50%;
+}
+
+@media (max-width: 800px){
+    .container{
+        flex-direction: column
+     }
+
+     .textContainer{
+        width: 100%;
+    }
+
+    .imgContainer{
+        width: 100%;
+    }
+
+  }
