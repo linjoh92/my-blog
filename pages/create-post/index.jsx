@@ -2,25 +2,31 @@ import BlogEditor from "@/components/blog-editor";
 import { createSlug } from "@/utils/createSlug";
 import useSWRMutation from "swr/mutation";
 import { useRouter } from "next/router";
-import { 
-  addPosts, 
-  postCacheKey 
-} from "../blog/api";
-import { useUser } from '@supabase/auth-helpers-react'
+import { addPosts, postCacheKey } from "../blog/api";
+import { userCacheKey, getUserById } from "../../api-routes/user";
+import { useUser } from "@supabase/auth-helpers-react";
+import useSWR from "swr";
 
 export default function CreatePost() {
   const router = useRouter();
   const user = useUser();
+  const activeUserId = user?.id;
 
-  const { trigger: addTrigger} = useSWRMutation(
-    postCacheKey,
-    addPosts,
+  const {
+    data: { data: userData = {} } = {},
+    error,
+    isLoading,
+  } = useSWR(activeUserId ? userCacheKey : null, () =>
+    getUserById(null, { arg: activeUserId })
   );
 
-  const handleOnSubmit = async ({ editorContent, titleInput, image}) => {
+  const { trigger: addTrigger } = useSWRMutation(postCacheKey, addPosts);
+
+  const handleOnSubmit = async ({ editorContent, titleInput, image }) => {
     const slug = createSlug(titleInput);
 
     const newPost = {
+      author_name: userData.name,
       title: titleInput,
       slug,
       author: user.id,
@@ -34,7 +40,7 @@ export default function CreatePost() {
     if (!error) {
       router.push(`/blog/${slug}`);
     }
-   };
+  };
 
   return (
     <>
@@ -43,6 +49,7 @@ export default function CreatePost() {
           heading="Create post"
           onSubmit={handleOnSubmit}
           buttonText="Upload post"
+          showCloseButton={false}
         />
       </div>
     </>

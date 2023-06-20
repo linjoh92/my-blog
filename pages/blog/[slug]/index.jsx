@@ -5,17 +5,12 @@ import AddComment from "./partials/add-comment";
 import Button from "@components/button";
 import Heading from "@components/heading";
 import BlogImageBanner from "@components/blog-image-banner";
-import { 
-  getPostBySlug, 
-  postCacheKey, 
-  deletePosts, 
-  getPosts 
-} from "../api";
+import { getPostBySlug, postCacheKey, deletePosts, getPosts } from "../api";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
-import { useUser } from '@supabase/auth-helpers-react'
+import { useUser } from "@supabase/auth-helpers-react";
 
 export default function BlogPost() {
   const router = useRouter();
@@ -25,17 +20,13 @@ export default function BlogPost() {
   const { data: postsData = [] } = useSWR(postCacheKey, getPosts);
   const posts = postsData.data || [];
 
-  const { data, error } = useSWR(
-    slug ? `${postCacheKey}${slug}` : null,
-    () => getPostBySlug({ slug })
+  const { data, error } = useSWR(slug ? `${postCacheKey}${slug}` : null, () =>
+    getPostBySlug({ slug })
   );
 
   const post = data?.data;
 
-  const { trigger: deleteTrigger } = useSWRMutation(
-    postCacheKey, 
-    deletePosts
-  );
+  const { trigger: deleteTrigger } = useSWRMutation(postCacheKey, deletePosts);
   const handleDeletePost = async () => {
     const { error } = await deleteTrigger(post.id);
     if (!error) {
@@ -55,7 +46,7 @@ export default function BlogPost() {
       router.push(`/blog/${nextPost.slug}`);
     }
   };
-  
+
   const handlePrevPost = () => {
     if (currentIndex !== -1 && currentIndex > 0) {
       const prevPost = posts[currentIndex - 1];
@@ -65,7 +56,7 @@ export default function BlogPost() {
 
   const hasNextPost = currentIndex !== -1 && currentIndex < posts.length - 1;
   const hasPrevPost = currentIndex !== -1 && currentIndex > 0;
-  
+
   if (!post && !error) {
     return <div>Loading...</div>;
   }
@@ -73,51 +64,82 @@ export default function BlogPost() {
     return <div>Error: {error.message}</div>;
   }
 
+  const handleGoBack = () => {
+    router.push(`/blog/`);
+  };
+
+  console.log(post);
+
   return (
     <>
       <div className={styles.containerPosts}>
         <section className={styles.container}>
-          <Heading>{post.title}</Heading>
-          {post?.image && <BlogImageBanner src={post.image} alt={post.title} noHover={true}/>}
+          <div className={styles.headingContainer}>
+            <Button onClick={handleGoBack} className={styles.btnSize}>
+              Back
+            </Button>
+            <Heading>{post.title}</Heading>
+            <div className={styles.btnSize}></div>
+          </div>
+          {post?.image && (
+            <BlogImageBanner src={post.image} alt={post.title} noHover={true} />
+          )}
           <div className={styles.dateContainer}>
-          <time className={styles.date}>
-              {new Date(post.created_at).toLocaleDateString('en-US', {
-                 year: 'numeric',
-                 month: 'long',
-                 day: 'numeric'
-               })}
+            <time className={styles.date}>
+              {new Date(post.created_at).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </time>
           </div>
           <div className={styles.textContainer}>
-             <h3 style={{ marginBottom: '10px' }}>{post.title}</h3>
-             <div dangerouslySetInnerHTML={{ __html: post.body }} />
-     
-             { user && user.id === post.author ? (
-                <span className={styles.author}> Author: You</span>
-              ) : (
-                <span className={styles.author}> Author: John Doe</span>
-             )}
-           </div>
-  
+            <h3 style={{ marginBottom: "10px" }}>{post.title}</h3>
+            <div dangerouslySetInnerHTML={{ __html: post.body }} />
+
+            {user && user.id === post.author ? (
+              <span className={styles.author}> Author: You</span>
+            ) : (
+              <span className={styles.author}>
+                {" "}
+                Author: {post.author_name ? post.author_name : "John Doe"}
+              </span>
+            )}
+          </div>
+
           {/* The Delete & Edit part should only be showed if you are authenticated and you are the author */}
-          {user && user.id === post.author && ( // Only show if authenticated and are the author
-            <div className={styles.buttonContainer}>
-              <Button onClick={handleDeletePost}>Delete</Button>
-              <Button onClick={handleEditPost}>Edit</Button>
-            </div>
-          )}
+          {user &&
+            user.id === post.author && ( // Only show if authenticated and are the author
+              <div className={styles.buttonContainer}>
+                <Button onClick={handleDeletePost}>Delete</Button>
+                <Button onClick={handleEditPost}>Edit</Button>
+              </div>
+            )}
           <div className={styles.pagnationConatiner}>
-            <Button className={`${styles.pagnationPrev} ${!hasPrevPost && styles.disabled}`} onClick={handlePrevPost}
-  >           <GrFormPrevious/>Prev
+            <Button
+              className={`${styles.pagnationPrev} ${
+                !hasPrevPost && styles.disabled
+              }`}
+              onClick={handlePrevPost}
+            >
+              {" "}
+              <GrFormPrevious />
+              Prev
             </Button>
-            <Button className={`${styles.pagnationNext} ${!hasNextPost && styles.disabled}`} onClick={handleNextPost}>
-              Next<GrFormNext/>
+            <Button
+              className={`${styles.pagnationNext} ${
+                !hasNextPost && styles.disabled
+              }`}
+              onClick={handleNextPost}
+            >
+              Next
+              <GrFormNext />
             </Button>
           </div>
         </section>
-  
-        <Comments postId={post.id} post={post}/>
-        <AddComment postId={post.id}  /> 
+
+        <Comments postId={post.id} post={post} />
+        <AddComment postId={post.id} />
       </div>
     </>
   );

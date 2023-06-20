@@ -14,6 +14,9 @@ export default function BlogEditor({
   heading = "",
   onSubmit,
   buttonText = "Submit",
+  handleGoBack,
+  closeBtnText,
+  showCloseButton = true,
 }) {
   const [image, setImage] = useState(src);
   const [editorContent, setEditorJsonContent] = useState(content);
@@ -31,6 +34,11 @@ export default function BlogEditor({
 
   return (
     <>
+      {showCloseButton && (
+        <Button onClick={handleGoBack} className={styles.btn}>
+          {closeBtnText}
+        </Button>
+      )}
       <Heading>{heading}</Heading>
       <form onSubmit={handleOnSubmit} className={styles.container}>
         <ImageUpload

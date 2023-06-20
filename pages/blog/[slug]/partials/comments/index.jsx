@@ -1,18 +1,16 @@
 import React from "react";
 import styles from "./comments.module.css";
 import Comment from "../comment";
-import { 
-  getCommentsByPostId, 
-  commentsCacheKey 
-} from "../../../api";
+import { getCommentsByPostId, commentsCacheKey } from "../../../api";
 import useSWR from "swr";
 
-export default function Comments({ postId , post}) {
+export default function Comments({ postId, post }) {
   const cacheKey = `${commentsCacheKey}-${postId}`;
 
-  const { data: comments, error } = useSWR(cacheKey, () =>
-  getCommentsByPostId(postId),
-  { refreshInterval: 0.1 } 
+  const { data: comments, error } = useSWR(
+    cacheKey,
+    () => getCommentsByPostId(postId),
+    { refreshInterval: 0.01 }
   );
 
   if (!comments && !error) {
@@ -27,10 +25,8 @@ export default function Comments({ postId , post}) {
     <div className={styles.container}>
       <h2>Comments</h2>
       {comments.map((comment) => (
-        <Comment key={comment.id} {...comment} post={post}  />
+        <Comment key={comment.id} {...comment} post={post} />
       ))}
     </div>
   );
 }
-
-

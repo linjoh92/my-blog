@@ -19,45 +19,45 @@
   font-weight: 700;
 }
 
-.posts{
+.posts {
   display: grid;
   background-color: white;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-gap: 10px; 
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
-.title{
+.title {
   margin-top: 5px;
   margin-bottom: 5px;
   color: black;
   font-weight: 600;
 }
 
-.introtext{
+.introtext {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.introtext p{
+.introtext p {
   width: 500px;
   line-height: 1.5;
   text-align: center;
 }
 
-.image{
+.image {
   width: 100%;
   height: auto;
 }
 
-.searchBar{
+.searchBar {
   display: flex;
   margin-top: 30px;
   justify-content: center;
   position: relative;
 }
 
-.searchBar input{
+.searchBar input {
   padding: 10px 15px;
   border: 1px solid rgb(207, 207, 207);
   border-radius: 50px;
@@ -66,7 +66,7 @@
   margin: 10px;
 }
 
-.searchBar input:hover{
+.searchBar input:hover {
   border: 1px solid grey;
 }
 
@@ -74,16 +74,16 @@
   outline: none;
 }
 
-.searchIconContainer{
+.searchIconContainer {
   position: absolute;
   width: 500px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   top: 35%;
   padding: 0px 15px;
 }
 
-.searchIcon{
+.searchIcon {
   color: rgb(207, 207, 207);
   transition: color 0.3s ease;
 }
@@ -92,28 +92,28 @@
   color: grey;
 }
 
+.you {
+  font-weight: 400;
+  color: grey;
+}
+
 @media screen and (max-width: 800px) {
-  
-  .posts{
+  .posts {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-
 @media screen and (max-width: 600px) {
-  
-  .posts{
+  .posts {
     display: flex;
     flex-direction: column;
   }
 }
 
-
 @media screen and (max-width: 540px) {
-  .searchIconContainer{
+  .searchIconContainer {
     right: 25px;
     padding: 0;
   }
-
 }

@@ -1,26 +1,43 @@
 .container {
-    margin-top: 20px;
-    max-width: 500px;
-  }
-  
-  .form {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .addCommentButton {
-    margin-top: 10px;
-    padding: 10px 10px !important;
-  }
-  
-  .inputContainer {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-  }
-  
-  .inputContainer input{
-    border: 1px solid black;
-    border-radius: 5px;
-  }
+  margin-top: 20px;
+  max-width: 500px;
+  padding-left: 50px;
+  margin-bottom: 100px;
+}
+
+.form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.addCommentButton {
+  margin-top: 10px;
+  padding: 10px 10px !important;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.inputContainer input {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.rubrikConatiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeIcon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.closeIcon:hover {
+  color: rgb(207, 207, 207);
+}

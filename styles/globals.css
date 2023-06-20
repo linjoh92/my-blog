@@ -8,7 +8,7 @@ html {
   background-color: rgb(253, 246, 241);
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
   html {
     background-color: rgb(255, 255, 255);
   }

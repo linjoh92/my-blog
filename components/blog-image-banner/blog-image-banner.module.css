@@ -1,7 +1,7 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  padding-bottom: 90%; 
+  padding-bottom: 90%;
   overflow: hidden;
 }
 
@@ -16,11 +16,11 @@
   filter: contrast(90%);
 }
 
-.image:hover{
+.image:hover {
   transform: scale(1.1);
   filter: contrast(105%);
 }
 
 .noHover {
-  pointer-events: none; 
+  pointer-events: none;
 }

@@ -1,4 +1,4 @@
-.containerPosts{
+.containerPosts {
   padding: 30px;
 }
 
@@ -59,21 +59,45 @@
   gap: 5px;
 }
 
-.pagnationConatiner{
+.pagnationConatiner {
   display: flex;
   margin-top: 20px;
   justify-content: space-between;
 }
 
-.pagnationPrev{
-  padding-left:5px;
+.pagnationPrev {
+  padding-left: 5px;
 }
 
-.pagnationNext{
-  padding-right:5px;
+.pagnationNext {
+  padding-right: 5px;
 }
 
 .disabled {
   pointer-events: none;
   opacity: 0.2;
+}
+
+.heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.headingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.btnSize {
+  width: 55px;
+  height: 26px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 540px) {
+  .containerPosts {
+    padding: 50px 10px;
+  }
 }

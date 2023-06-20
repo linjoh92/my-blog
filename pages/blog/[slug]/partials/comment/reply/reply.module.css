@@ -1,25 +1,25 @@
 .container {
-    padding: 5px 10px 10px 0;
-  }
-  
-  .authorDateContainer{
-    display: flex;
-    font-family: monospace;
-    gap: 10px;
-    margin-top: 5px;
-  }
-  
-  .author {
-    font-weight: 600;
-    font-size: 14px;
-  }
-  
-  .date {
-    color: grey;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    margin-top: 10px;
-    gap: 5px;
-  }
+  padding: 5px 10px 10px 0;
+}
+
+.authorDateContainer {
+  display: flex;
+  font-family: monospace;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.author {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.date {
+  color: grey;
+}
+
+.buttonContainer {
+  display: flex;
+  margin-top: 10px;
+  gap: 5px;
+}

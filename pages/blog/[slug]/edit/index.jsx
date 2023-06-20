@@ -1,49 +1,54 @@
 import { useRouter } from "next/router";
 import BlogEditor from "@/components/blog-editor";
-import { 
-  postCacheKey,
-  editPosts,
-  getPostBySlug
-} from "../../api"; 
+import { postCacheKey, editPosts, getPostBySlug } from "../../api";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { createSlug } from "@/utils/createSlug";
 import { createPagesServerClient } from "@supabase/auth-helpers-nextjs";
-import Button from "@components/button";
+import { userCacheKey, getUserById } from "../../../../api-routes/user";
+import { useUser } from "@supabase/auth-helpers-react";
 
 export default function EditBlogPost() {
   const router = useRouter();
   const { slug } = router.query;
+  const user = useUser();
+  const activeUserId = user?.id;
 
-  const { 
+  const { data: { data: userData = {} } = {} } = useSWR(
+    activeUserId ? userCacheKey : null,
+    () => getUserById(null, { arg: activeUserId })
+  );
+
+  const {
     data: { data: post = {} } = {},
     error,
     isLoading,
-    } = useSWR( slug ? `${postCacheKey}${slug}` : null,() => getPostBySlug({ slug }));
+  } = useSWR(slug ? `${postCacheKey}${slug}` : null, () =>
+    getPostBySlug({ slug })
+  );
 
-    const { trigger: editTrigger } = useSWRMutation(
-      `${postCacheKey}${slug}`,
-      editPosts
-    );
-    
-    const handleOnSubmit = async ({ editorContent, titleInput, image }) => {
-      const newSlug = createSlug(titleInput);
-    
-      const updatedPost = {
-        title: titleInput,
-        slug: newSlug,
-        body: editorContent,
-        image: image,
-        id: post && post.id,
-      };
-    
-      const { data, error } = await editTrigger(updatedPost);
-    
-      if (!error) {
-        router.push(`/blog/${newSlug}`);
-      }
+  const { trigger: editTrigger } = useSWRMutation(
+    `${postCacheKey}${slug}`,
+    editPosts
+  );
+
+  const handleOnSubmit = async ({ editorContent, titleInput, image }) => {
+    const newSlug = createSlug(titleInput);
+
+    const updatedPost = {
+      author_name: userData.name,
+      title: titleInput,
+      slug: newSlug,
+      body: editorContent,
+      image: image,
+      id: post && post.id,
     };
-    
+
+    const { data, error } = await editTrigger(updatedPost);
+    if (!error) {
+      router.push(`/blog/${newSlug}`);
+    }
+  };
 
   if (isLoading) {
     return "...loading";
@@ -56,26 +61,25 @@ export default function EditBlogPost() {
   const handleGoBack = () => {
     router.push(`/blog/${slug}`);
   };
-  
+
   return (
     <>
-      <div>
-        <Button onClick={handleGoBack}>Go back</Button>
-      </div>
       <BlogEditor
         heading="Edit blog post"
-        title={post && post.title} 
+        title={post && post.title}
         src={post && post.image}
         alt={post && post.title}
         content={post && post.body}
         buttonText="Save changes"
         onSubmit={handleOnSubmit}
+        handleGoBack={handleGoBack}
+        closeBtnText="Close"
       />
     </>
   );
 }
 
-// Detta har jag klipp rakt in från Alex förstår inte hel. 
+// Detta har jag klipp rakt in från Alex förstår inte hel.
 
 export const getServerSideProps = async (ctx) => {
   const supabase = createPagesServerClient(ctx);
@@ -105,4 +109,3 @@ export const getServerSideProps = async (ctx) => {
     props: {},
   };
 };
-

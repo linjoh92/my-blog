@@ -3,18 +3,15 @@ import { supabase } from "@/lib/supabaseClient";
 export const userCacheKey = "/profil";
 
 export const getUser = async () => {
-  const { data } = await supabase
-  .from('users')
-  .select()
+  const { data } = await supabase.from("users").select();
 
   return { data };
 };
 
 export async function getUserById(_, { arg: id }) {
-  
   const { data, error } = await supabase
     .from("users")
-    .select('*')
+    .select("*")
     .eq("id", id)
     .single();
 

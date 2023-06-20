@@ -2,7 +2,7 @@
   padding: 10px 0px 0px 0;
 }
 
-.authorDateContainer{
+.authorDateContainer {
   display: flex;
   font-family: monospace;
   gap: 10px;
@@ -24,7 +24,7 @@
   gap: 5px;
 }
 
-.bothButtonContainer{
+.bothButtonContainer {
   display: flex;
   gap: 10px;
 }
