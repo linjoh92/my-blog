@@ -5,7 +5,7 @@ import Label from "@components/label";
 import TextArea from "@components/text-area";
 import styles from "./add-reply.module.css";
 import useSWRMutation from "swr/mutation";
-import { addReply, replyCacheKey } from "../../../../../blog/api";
+import { addReply, replyCacheKey } from "../../../../../../api-routes/reply";
 import { useUser } from "@supabase/auth-helpers-react";
 import { IoMdClose } from "react-icons/io";
 

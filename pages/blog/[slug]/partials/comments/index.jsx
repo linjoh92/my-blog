@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./comments.module.css";
 import Comment from "../comment";
-import { getCommentsByPostId, commentsCacheKey } from "../../../api";
+import { getCommentsByPostId, commentsCacheKey } from "../../../../../api-routes/comments";
 import useSWR from "swr";
 
 export default function Comments({ postId, post }) {

@@ -1,6 +1,6 @@
 import Button from "@components/button";
 import styles from "./reply.module.css";
-import { replyCacheKey, deleteReply } from "../../../../api";
+import { replyCacheKey, deleteReply } from "../../../../../../api-routes/reply";
 import useSWRMutation from "swr/mutation";
 import { useUser } from "@supabase/auth-helpers-react";
 

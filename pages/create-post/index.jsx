@@ -2,7 +2,7 @@ import BlogEditor from "@/components/blog-editor";
 import { createSlug } from "@/utils/createSlug";
 import useSWRMutation from "swr/mutation";
 import { useRouter } from "next/router";
-import { addPosts, postCacheKey } from "../blog/api";
+import { addPosts, postCacheKey } from "../../api-routes/posts";
 import { userCacheKey, getUserById } from "../../api-routes/user";
 import { useUser } from "@supabase/auth-helpers-react";
 import useSWR from "swr";

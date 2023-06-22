@@ -5,7 +5,7 @@ import Label from "@components/label";
 import TextArea from "@components/text-area";
 import styles from "./add-comment.module.css";
 import useSWRMutation from "swr/mutation";
-import { addComment, commentsCacheKey } from "../../../../blog/api";
+import { addComment, commentsCacheKey } from "../../../../../api-routes/comments";
 import { useUser } from "@supabase/auth-helpers-react";
 
 export default function AddComment({ postId }) {

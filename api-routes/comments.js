@@ -1,11 +1,34 @@
-export const getComments = () => {
-  //Handle get all comments
+import { supabase } from "@/lib/supabaseClient";
+
+export const commentsCacheKey = "/blogg/comments";
+
+export async function getCommentsByPostId(postId) {
+  const { data, error } = await supabase
+    .from("comments")
+    .select()
+    .eq("post_id", postId);
+
+  return data || [];
+}
+
+export const addComment = async (_, { arg: commentData }) => {
+  const { data, error } = await supabase
+    .from("comments")
+    .insert({ ...commentData })
+    .single()
+    .select("*");
+
+  return { error, data };
 };
 
-export const addComment = () => {
-  //Handle add comment here
-};
+export async function deleteComments(_, { arg: id }) {
+  const { data, error } = await supabase
+    .from("comments")
+    .delete()
+    .select()
+    .eq("id", id);
 
-export const removeComment = () => {
-  //Handle remove comment here
-};
+  return { data, error };
+}
+
+

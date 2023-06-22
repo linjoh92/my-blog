@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import BlogEditor from "@/components/blog-editor";
-import { postCacheKey, editPosts, getPostBySlug } from "../../api";
+import { postCacheKey, editPosts, getPostBySlug } from "../../../../api-routes/posts";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { createSlug } from "@/utils/createSlug";

@@ -1,6 +1,6 @@
 import Button from "@components/button";
 import styles from "./comment.module.css";
-import { commentsCacheKey, deleteComments } from "../../../api";
+import { commentsCacheKey, deleteComments } from "../../../../../api-routes/comments";
 import useSWRMutation from "swr/mutation";
 import { useUser } from "@supabase/auth-helpers-react";
 import AddReply from "./add-reply";

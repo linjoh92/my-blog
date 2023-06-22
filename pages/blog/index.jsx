@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./blog.module.css";
 import Heading from "@components/heading";
 import IntroText from "@components/intro-text";
-import { getPosts, postCacheKey } from "./api";
+import { getPosts, postCacheKey } from "../../api-routes/posts";
 import useSWR from "swr";
 import { useUser } from "@supabase/auth-helpers-react";
 import BlogImageBanner from "@components/blog-image-banner";

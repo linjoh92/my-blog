@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./replys.module.css";
 import Reply from "../reply";
-import { getReplysByCommentId, replyCacheKey } from "../../../../api";
+import { getReplysByCommentId, replyCacheKey } from "../../../../../../api-routes/reply";
 import useSWR from "swr";
 
 export default function Replys({ commentId, comment }) {

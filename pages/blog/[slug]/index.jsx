@@ -5,7 +5,7 @@ import AddComment from "./partials/add-comment";
 import Button from "@components/button";
 import Heading from "@components/heading";
 import BlogImageBanner from "@components/blog-image-banner";
-import { getPostBySlug, postCacheKey, deletePosts, getPosts } from "../api";
+import { getPostBySlug, postCacheKey, deletePosts, getPosts } from "../../../api-routes/posts";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { GrFormPrevious } from "react-icons/gr";
